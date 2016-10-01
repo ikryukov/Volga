@@ -3,10 +3,13 @@ compiler: clang
 sudo: required
 dist: trusty
 
+before_install:
+  - sudo apt-add-repository --yes ppa:canonical-qt5-edgers/ubuntu1204-qt5
+  - sudo apt-get update -qq
+
 install:
-  - sudo apt-get install -y qt5-default qttools5-dev-tools
+  - yes | sudo apt-get install -qq --force-yes qtdeclarative5-dev
 
 script:
   - qmake Volga.pro
-  - make
-  
+  - make -j 8
