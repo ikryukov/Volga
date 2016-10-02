@@ -8,7 +8,7 @@ before_install:
   - sudo apt-get update -qq
 
 install:
-  - sudo apt-get install -qq qt57-meta-full
+  - sudo apt-get install -qq qt57-meta-full ; source /opt/qt57/bin/qt57-env.sh ; export QTHOME=/opt/qt57 ;
 
 script:
   - qmake Volga.pro
