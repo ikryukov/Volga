@@ -14,8 +14,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        volgamainwindow.cpp
+        volgamainwindow.cpp \
+    renderopenglwidget.cpp
 
-HEADERS  += volgamainwindow.h
+HEADERS  += volgamainwindow.h \
+    renderopenglwidget.h
 
 FORMS    += volgamainwindow.ui
