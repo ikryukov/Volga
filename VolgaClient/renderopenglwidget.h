@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QOpenGLWidget>
 #include <QOpenGLFunctions>
+#include <QOpenGLDebugLogger>
 
 class RenderOpenGLWidget : public QOpenGLWidget, protected QOpenGLFunctions
 {
@@ -20,10 +21,15 @@ protected:
     void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
     void mouseMoveEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
 
- private:
+private slots:
+    void onMessageLogged(QOpenGLDebugMessage message);
+
+private:
+    QOpenGLDebugLogger* m_logger;
     GLuint g_vertex_buffer;
     GLuint g_index_buffer;
     GLuint g_texture;
+
 };
 
 #endif // RENDEROPENGLWIDGET_H

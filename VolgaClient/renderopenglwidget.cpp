@@ -1,10 +1,19 @@
 #include "renderopenglwidget.h"
+#include <QDebug>
 
 RenderOpenGLWidget::RenderOpenGLWidget(QWidget *parent)
     : QOpenGLWidget(parent)
 
 {
-
+    QSurfaceFormat format;
+    format.setMajorVersion(4);
+    format.setMinorVersion(1);
+    format.setRenderableType(QSurfaceFormat::OpenGL);
+//    format.setProfile(QSurfaceFormat::CoreProfile);
+#ifdef GL_DEBUG
+    format.setOption(QSurfaceFormat::DebugContext);
+#endif
+    QOpenGLWidget::setFormat(format);
 }
 
 RenderOpenGLWidget::~RenderOpenGLWidget()
@@ -13,6 +22,20 @@ RenderOpenGLWidget::~RenderOpenGLWidget()
 
 void RenderOpenGLWidget::initializeGL()
 {
+#ifdef GL_DEBUG
+    m_logger = new QOpenGLDebugLogger( this );
+    connect(m_logger, SIGNAL(messageLogged(QOpenGLDebugMessage)), this, SLOT(onMessageLogged(QOpenGLDebugMessage)), Qt::DirectConnection);
+    if (m_logger->initialize())
+    {
+        m_logger->startLogging(QOpenGLDebugLogger::SynchronousLogging);
+        m_logger->enableMessages();
+    }
+    else
+    {
+      qDebug() << "GL_DEBUG Debug Logger (NONE)\n";
+    }
+#endif
+
     initializeOpenGLFunctions();
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
     glCullFace(GL_NONE);
@@ -78,4 +101,9 @@ void RenderOpenGLWidget::mousePressEvent(QMouseEvent *event)
 void RenderOpenGLWidget::mouseMoveEvent(QMouseEvent *event)
 {
 
+}
+
+void RenderOpenGLWidget::onMessageLogged(QOpenGLDebugMessage message)
+{
+    qDebug() << message;
 }
