@@ -4,12 +4,11 @@ sudo: required
 dist: trusty
 
 before_install:
-  - sudo apt-add-repository --yes ppa:canonical-qt5-edgers/ubuntu1204-qt5
+  - sudo add-apt-repository --yes ppa:beineri/opt-qt57-trusty
   - sudo apt-get update -qq
 
 install:
-  sudo add-apt-repository --yes ppa:beineri/opt-qt57-trusty
-  sudo apt-get install -qq qt57-meta-full
+  - sudo apt-get install -qq qt57-meta-full
 
 script:
   - qmake Volga.pro
