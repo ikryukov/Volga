@@ -15,6 +15,9 @@ public:
     explicit VolgaMainWindow(QWidget *parent = 0);
     ~VolgaMainWindow();
 
+public slots:
+    void onOpen();
+
 private:
     Ui::VolgaMainWindow *ui;
 };

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>shaders/fullscreentriangle.vert</file>
+        <file>shaders/fullscreentriangle.frag</file>
+    </qresource>
+</RCC>
