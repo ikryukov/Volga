@@ -17,6 +17,7 @@ public:
 
 public slots:
     void onOpen();
+    void onConfiguration();
 
 private:
     Ui::VolgaMainWindow *ui;

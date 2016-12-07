@@ -31,7 +31,8 @@ SOURCES += main.cpp\
     ../3rdparty/RadeonRays_SDK/App/sh.cpp \
     ../3rdparty/RadeonRays_SDK/App/shader_manager.cpp \
     ../3rdparty/RadeonRays_SDK/App/shproject.cpp \
-    ../3rdparty/RadeonRays_SDK/App/tiny_obj_loader.cpp
+    ../3rdparty/RadeonRays_SDK/App/tiny_obj_loader.cpp \
+    configurationdialog.cpp
 
 HEADERS  += volgamainwindow.h \
     renderopenglwidget.h \
@@ -51,7 +52,8 @@ HEADERS  += volgamainwindow.h \
     ../3rdparty/RadeonRays_SDK/App/shader_manager.h \
     ../3rdparty/RadeonRays_SDK/App/shproject.h \
     ../3rdparty/RadeonRays_SDK/App/sobol.h \
-    ../3rdparty/RadeonRays_SDK/App/tiny_obj_loader.h
+    ../3rdparty/RadeonRays_SDK/App/tiny_obj_loader.h \
+    configurationdialog.h
 
 INCLUDEPATH += ../3rdparty/RadeonRays_SDK/App/ \
                 ../3rdparty/RadeonRays_SDK/RadeonRays/include/ \
@@ -59,7 +61,8 @@ INCLUDEPATH += ../3rdparty/RadeonRays_SDK/App/ \
                 ../3rdparty/RadeonRays_SDK/3rdParty/oiio16/include
 
 
-FORMS    += volgamainwindow.ui
+FORMS    += volgamainwindow.ui \
+    configurationdialog.ui
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../3rdparty/RadeonRays_SDK/Bin/Debug/x64/ -lCLW64D
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../3rdparty/RadeonRays_SDK/Bin/Debug/x64/ -lCLW64Dd

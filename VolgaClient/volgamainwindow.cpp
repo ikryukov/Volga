@@ -2,6 +2,7 @@
 #include "ui_volgamainwindow.h"
 #include <QFileDialog>
 #include <QString>
+#include "configurationdialog.h"
 
 VolgaMainWindow::VolgaMainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -11,6 +12,7 @@ VolgaMainWindow::VolgaMainWindow(QWidget *parent) :
     ui->openGLWidget->initCL();
 
     connect(ui->actionOpen, SIGNAL(triggered()), this, SLOT(onOpen()));
+    connect(ui->actionConfiguration, SIGNAL(triggered()), this, SLOT(onConfiguration()));
 }
 
 VolgaMainWindow::~VolgaMainWindow()
@@ -30,4 +32,13 @@ void VolgaMainWindow::onOpen()
     ui->openGLWidget->StartRenderThreads();
     ui->openGLWidget->isLoaded = true;
 
+}
+
+void VolgaMainWindow::onConfiguration()
+{
+    Configurationdialog cfgDialog;
+    if (cfgDialog.exec() == QDialog::Accepted)
+    {
+        //TODO: update render settings
+    }
 }
